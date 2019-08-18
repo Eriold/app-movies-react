@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import MainLayout from '../layouts/MainLayout';
+
+const favorite = 'Favourite';
 
 export default class Favourite extends Component {
   componentDidMount() {}
@@ -6,7 +9,7 @@ export default class Favourite extends Component {
   render() {
     return (
       <div>
-        <h1>Hello Favourite</h1>
+        <MainLayout title={favorite}>Add movies favourites here</MainLayout>
       </div>
     );
   }
