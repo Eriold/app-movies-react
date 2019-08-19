@@ -4,12 +4,14 @@ import './App.css';
 import Navbar from './components/shared/Navbar';
 import Home from './components/views/Home';
 import Favourite from './components/views/Favourite';
+import Detail from './components/views/Detail';
 
 function Routes() {
   return (
     <>
       <Route exact path="/" component={Home} />
       <Route exact path="/favourite" component={Favourite} />
+      <Route exact path="/detail/:id" component={Detail} />
     </>
   );
 }

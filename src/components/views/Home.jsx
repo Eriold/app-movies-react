@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
-import { getDataMovies } from '../api/movies';
+import { getDataMovies, massageMovieData } from '../api/movies';
 import MainLayout from '../layouts/MainLayout';
 import MovieCard from '../cards/CardMovie';
 
@@ -9,14 +8,6 @@ const home = 'Home';
 const alert = err => {
   return alert(err);
 };
-
-const massageMovieData = movie => ({
-  id: movie.id,
-  title: movie.title,
-  year: movie.release_date,
-  image: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-  overview: movie.overview,
-});
 
 export default class Home extends Component {
   constructor(props) {
@@ -27,7 +18,7 @@ export default class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     getDataMovies(
       res => {
         this.setState({
@@ -47,7 +38,7 @@ export default class Home extends Component {
       <div>
         <MainLayout title={home}>
           {movies.map(movie => (
-            <MovieCard key={movie.id} {...movie} />
+            <MovieCard key={movie.id} data={movie} />
           ))}
         </MainLayout>
       </div>

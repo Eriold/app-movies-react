@@ -5,8 +5,12 @@ export default class CardMovie extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      checked: false,
+    };
   }
+
+  componentDidMount() {}
 
   handleCheck = () => {
     this.setState(state => ({
@@ -15,10 +19,25 @@ export default class CardMovie extends Component {
   };
 
   render() {
-    const { id, title, year, image, overview } = this.props;
+    const { data } = this.props;
+    const { id, title, year, image, overview } = data;
+    const { checked } = this.state;
     return (
       <div className="movie-container">
-        <Link to={`/movie/${id}`} className="url-title">
+        <div className="favourite-container">
+          <button
+            onClick={this.handleCheck}
+            className="favourite-button"
+            type="button"
+          >
+            <span
+              className={`fa fa-star favourite-star ${
+                checked ? 'checked' : ''
+              }`}
+            />
+          </button>
+        </div>
+        <Link to={`/detail/${id}`} className="url-title">
           <h1>{title}</h1>
         </Link>
         <div>{year}</div>

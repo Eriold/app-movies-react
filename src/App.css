@@ -55,6 +55,39 @@ html {
     font-size: 4em;
 }
 
+.favourite-container {
+    position: relative;
+}
+
+.favourite-star {
+    color: azure;
+}
+
+.favourite-button {
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    position: absolute;
+    right: 0;
+    font-size: 30px;
+}
+
+.close-button {
+    cursor: pointer;
+    background: transparent;
+    color: red;
+    border: 0;
+    outline: 0;
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+}
+
+.checked {
+    color: orange;
+}
+
 @media (max-width: 910px) {
     .content {
         flex-direction: column;
