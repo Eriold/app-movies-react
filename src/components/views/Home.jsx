@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { getDataMovies, massageMovieData } from '../api/movies';
+import { getDataMovies } from '../api/movies';
 import MainLayout from '../layouts/MainLayout';
 import MovieCard from '../cards/CardMovie';
 
 const home = 'Home';
-
-const alert = err => {
-  return alert(err);
-};
 
 export default class Home extends Component {
   constructor(props) {
@@ -19,16 +15,9 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
-    getDataMovies(
-      res => {
-        this.setState({
-          movies: res.data.results.map(movie => massageMovieData(movie)),
-        });
-      },
-      err => {
-        alert(err);
-      }
-    );
+    this.setState({
+      movies: await getDataMovies(),
+    });
   }
 
   render() {

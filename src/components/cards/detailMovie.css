@@ -1,0 +1,46 @@
+html {
+    box-sizing: border-box;
+}
+
+.detail-main {
+    color: azure;
+    margin: 5px auto;
+    width: 70%;
+    background-color: rgba(20, 15, 20, 0.363);
+    border-radius: 9px;
+}
+
+.detail-first {
+    float: left;
+}
+
+.detail-img {
+    float: left;
+    padding: 15px;
+    width: 35%;
+    text-align: center;
+}
+
+.detail-image {
+    width: 100%;
+}
+
+.detail-info {
+    float: left;
+    width: 65%;
+    padding: 15px;
+}
+
+.detail-description {
+    float: left;
+    padding: 15px;
+}
+
+.detail-title {
+    font-size: 36px;
+    color: rgb(255, 136, 0);
+}
+
+.detail-subtitle {
+    color: rgb(29, 231, 238);
+}

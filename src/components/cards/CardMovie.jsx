@@ -37,9 +37,11 @@ export default class CardMovie extends Component {
             />
           </button>
         </div>
-        <Link to={`/detail/${id}`} className="url-title">
-          <h1>{title}</h1>
-        </Link>
+        <div className="cardMovie-Short">
+          <Link to={`/detail/${id}`} className="url-title">
+            <h3>{title}</h3>
+          </Link>
+        </div>
         <div>{year}</div>
         <div className="overview-container">
           <div className="img-container">

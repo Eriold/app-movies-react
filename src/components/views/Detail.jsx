@@ -11,15 +11,16 @@ export default class Detail extends Component {
 
     this.state = {
       movie: [],
-      review: [],
+      review: {},
     };
   }
 
   async componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
+    const getReview = await getFilterReview(id);
     this.setState({ movie: await getDetailMovies(id) });
-    this.setState({ review: await getFilterReview(id) });
+    this.setState({ review: getReview[0] });
   }
 
   render() {

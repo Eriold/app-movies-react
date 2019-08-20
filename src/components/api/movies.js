@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 const API_KEY = '2e6bfefb5e54d83f78d1b38be487bb65';
-const getMovies = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-const config = { 'Access-Control-Allow-Origin': '*' };
 
 export const massageMovieData = movie => ({
   id: movie.id,
@@ -12,8 +10,7 @@ export const massageMovieData = movie => ({
   overview: movie.overview,
 });
 
-const massageFilterMovie = movie => ({
-  id: movie.id,
+const massageFilterReview = movie => ({
   author: movie.author,
   content: movie.content,
 });
@@ -25,31 +22,23 @@ const massageDetailMovie = movie => ({
   image: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
   languaje: movie.original_language,
   title: movie.original_title,
-  genres: movie.genres.map(name => name.name),
+  genres: movie.genres.map(name => `[${name.name}] `),
   overview: movie.overview,
 });
 
-export function getDataMovies(callback, errorcallback) {
+export const getDataMovies = () =>
   axios
-    .get(getMovies, config)
-    .then(res => {
-      if (callback != null) {
-        callback(res);
-      }
-    })
-    .catch(err => {
-      if (errorcallback != null) {
-        errorcallback(err);
-      }
-    });
-}
+    .get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    )
+    .then(res => res.data.results.map(movie => massageMovieData(movie)));
 
 export const getFilterReview = id =>
   axios
     .get(
       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
     )
-    .then(res => res.data.results.map(movie => massageFilterMovie(movie)));
+    .then(res => res.data.results.map(movie => massageFilterReview(movie)));
 
 export const getDetailMovies = id =>
   axios
