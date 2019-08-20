@@ -31,7 +31,7 @@ const NavBar = () => {
             className="form-control mr-sm-2"
             type="search"
             placeholder="Search Movie"
-            onKeyUp={event => movieID(event.target.value)}
+            // onKeyUp={event => movieID(event.target.value)}
           />
         </ul>
       </Navbar>
@@ -39,8 +39,8 @@ const NavBar = () => {
   );
 };
 
-function movieID(evnt) {
-  window.location = `http://localhost:3000/movie/${evnt}`;
-}
+// function movieID(evnt) {
+//   window.location = `http://localhost:3000/movie/${evnt}`;
+// }
 
 export default NavBar;
